@@ -130,7 +130,6 @@ public class Main extends JFrame {
      * program to load the old (previous) data for the user
       */
     void windowClosingEventHandler() {
-
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Dictionary.DAT"))){
             oos.writeObject(dictionary);
             System.out.println("poo close");
