@@ -2,7 +2,7 @@ package slangwords;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
+import java.util.*;
 
 public class findSlangWord extends JPanel {
 
@@ -55,5 +55,6 @@ public class findSlangWord extends JPanel {
             slangWordDefinitionLabel.setFont(new Font("Serif", Font.PLAIN, 18));
             slangWordDefinitionLabel.setText("Can not find " + "<" + slangWordKey + ">" +" in the dictionary");
         }
+        if (value != null) viewSearchingHistory.addWordToHistory(slangWordKey);
     }
 }

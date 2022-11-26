@@ -28,7 +28,7 @@ public class findByDefinition extends JPanel {
 
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new BorderLayout());
-        resultPanel.add(new JLabel("Search results:"), BorderLayout.PAGE_START);
+        resultPanel.add(new JLabel("Result:"), BorderLayout.PAGE_START);
         resultList = new JList<>();
         JScrollPane resultListScrollPane = new JScrollPane(resultList);
         resultListScrollPane.setMaximumSize(new Dimension(600,300));
@@ -77,14 +77,11 @@ public class findByDefinition extends JPanel {
         }
     }
 
-    /**
-     * Display Slang when choose a slang
-     * @param dictionary HashMap
-     * @param str String
-     */
-    void viewMeaning(HashMap<String, String> dictionary, String str) {
-        slangWordLabel.setText(str);
+    void viewMeaning(HashMap<String, String> dictionary, String meaning) {
+        slangWordLabel.setText(meaning);
         slangWordLabel.setFont(new Font("Serif", Font.PLAIN, 18));
-        slangWordLabel.setText("-> " + dictionary.get(str));
+        slangWordLabel.setText("-> " + dictionary.get(meaning));
+        viewSearchingHistory.addWordToHistory(meaning);
     }
+
 }

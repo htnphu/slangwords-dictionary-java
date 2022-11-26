@@ -18,7 +18,7 @@ public class Main extends JFrame {
         new Main();
     }
     public Main() throws IOException {
-        //        // load the data at the beginning in order to have faster loading data require
+        // load the data at the beginning in order to have faster loading data require
         loadData();
         addComponents();
         setTitle("Slang Words");
@@ -28,13 +28,15 @@ public class Main extends JFrame {
     public void loadData() throws IOException {
         // load the data from previous running
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dictionary.DAT"));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Dictionary.DAT"));
             // convert read object to HashMap<String, String>
             dictionary = (HashMap<String, String>)ois.readObject();
             ois.close();
         } catch (Exception ex) {
+//            Reference: Slide Week03 JavaIO - Nguyen Van Khiet
             dictionary = new HashMap<String, String>();
-            try (BufferedReader br = new BufferedReader(new FileReader("slang.txt"))) {
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("slang.txt"));
                 // read and skip the first line data
                 br.readLine();
                 String line = ""; // line reading
@@ -76,11 +78,11 @@ public class Main extends JFrame {
 
         JButton functionButton03 = new JButton("History");
         functionButton03.setFocusable(false);
-        functionButton03.addActionListener(e -> System.out.println("poo3"));
+        functionButton03.addActionListener(e -> refreshFrameWithNewContent(new viewSearchingHistory()));
 
         JButton functionButton04 = new JButton("Add slang word");
         functionButton04.setFocusable(false);
-        functionButton04.addActionListener(e -> System.out.println("poo4"));
+        functionButton04.addActionListener(e -> refreshFrameWithNewContent(new addSlangWord(dictionary)));
 
         JButton functionButton05 = new JButton("Edit slang word");
         functionButton05.setFocusable(false);
@@ -126,16 +128,16 @@ public class Main extends JFrame {
         menuPanel.add(buttonContainer, BorderLayout.PAGE_START);
         mainPanel.setBorder(BorderFactory.createEmptyBorder(25,0,0,0));
         mainPanel.add(titleLabel, BorderLayout.PAGE_START);
-        mainPanel.add(contentPanel, BorderLayout.CENTER);
         mainPanel.add(menuPanel, BorderLayout.LINE_START);
+        mainPanel.add(contentPanel, BorderLayout.CENTER);
 
         setPreferredSize(new Dimension(700, 500));
         setContentPane(mainPanel);
         pack();
 
         setVisible(true);
-        // Save dictionary before closing -> history of user
 
+        // Save dictionary before closing -> history of user
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -159,5 +161,6 @@ public class Main extends JFrame {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+        viewSearchingHistory.saveToHistoryFile();
     }
 }
