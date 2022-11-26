@@ -68,11 +68,11 @@ public class Main extends JFrame {
 
         JButton functionButton01 = new JButton("Find slang word");
         functionButton01.setFocusable(false);
-        functionButton01.addActionListener(e -> refreshFrameWithNewContent(new function01(dictionary)));
+        functionButton01.addActionListener(e -> refreshFrameWithNewContent(new findSlangWord(dictionary)));
 
         JButton functionButton02 = new JButton("Find by definition");
         functionButton02.setFocusable(false);
-        functionButton02.addActionListener(e -> System.out.println("poo2"));
+        functionButton02.addActionListener(e -> refreshFrameWithNewContent(new findByDefinition(dictionary)));
 
         JButton functionButton03 = new JButton("History");
         functionButton03.setFocusable(false);
@@ -107,7 +107,7 @@ public class Main extends JFrame {
         functionButton10.addActionListener(e -> System.out.println("poo10"));
 
         JPanel buttonContainer = new JPanel();
-        buttonContainer.setLayout(new GridLayout(10, 0, 0, 5));
+        buttonContainer.setLayout(new GridLayout(10, 1, 5, 5));
         buttonContainer.add(functionButton01);
         buttonContainer.add(functionButton02);
         buttonContainer.add(functionButton03);
@@ -118,20 +118,24 @@ public class Main extends JFrame {
         buttonContainer.add(functionButton08);
         buttonContainer.add(functionButton09);
         buttonContainer.add(functionButton10);
+        buttonContainer.setBorder(BorderFactory.createEmptyBorder(25,0,0,0));
 
         // content panel (for changing the view with functions)
         contentPanel = new JPanel();
 
         menuPanel.add(buttonContainer, BorderLayout.PAGE_START);
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(25,0,0,0));
         mainPanel.add(titleLabel, BorderLayout.PAGE_START);
         mainPanel.add(contentPanel, BorderLayout.CENTER);
         mainPanel.add(menuPanel, BorderLayout.LINE_START);
 
-        setPreferredSize(new Dimension(600, 395));
+        setPreferredSize(new Dimension(700, 500));
         setContentPane(mainPanel);
         pack();
 
         setVisible(true);
+        // Save dictionary before closing -> history of user
+
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
