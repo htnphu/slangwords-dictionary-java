@@ -9,20 +9,25 @@ public class deleteSlangWord extends JPanel {
     public deleteSlangWord(HashMap<String, String> dictionary) {
         deleteWordTextField = new JTextField();
 
-        JButton deleteButton = new JButton("Delete word");
+        JButton deleteButton = new JButton("Delete");
+        deleteButton.setFocusable(false);
+        deleteButton.setBackground(new Color(126, 138, 151));
+        deleteButton.setOpaque(true);
+        deleteButton.setBorderPainted(false);
         deleteButton.addActionListener(e -> deleteButtonHandler(dictionary, deleteWordTextField.getText()));
 
-        JPanel deletePanel = new JPanel();
-        deletePanel.setLayout(new BoxLayout(deletePanel, BoxLayout.X_AXIS));
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
 
-        deletePanel.add(deleteWordTextField);
-        deletePanel.add(Box.createHorizontalStrut(5));
-        deletePanel.add(deleteButton);
+        mainPanel.add(deleteWordTextField);
+        mainPanel.add(Box.createHorizontalStrut(5));
+        mainPanel.add(deleteButton);
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(26,0,0,0));
 
         add(Box.createVerticalStrut(10));
         add(Box.createHorizontalStrut(10));
         setLayout(new BorderLayout());
-        add(deletePanel, BorderLayout.PAGE_START);
+        add(mainPanel, BorderLayout.PAGE_START);
     }
 
     void deleteButtonHandler(HashMap<String, String> dictionary, String slangWordKey) {

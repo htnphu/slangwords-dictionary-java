@@ -12,6 +12,10 @@ public class editSlangWord extends JPanel {
         JTextField searchWordText = new JTextField();
 
         JButton searchButton = new JButton("Search");
+        searchButton.setFocusable(false);
+        searchButton.setBackground(new Color(126, 138, 151));
+        searchButton.setOpaque(true);
+        searchButton.setBorderPainted(false);
         searchButton.addActionListener(e -> searchButtonHandler(dictionary, searchWordText.getText()));
 
         JPanel searchPanel = new JPanel();
@@ -34,6 +38,10 @@ public class editSlangWord extends JPanel {
         informationPanel.add(meaningPanel);
 
         JButton editButton = new JButton("Edit");
+        editButton.setFocusable(false);
+        editButton.setBackground(new Color(126, 138, 151));
+        editButton.setOpaque(true);
+        editButton.setBorderPainted(false);
         editButton.addActionListener(e -> editButtonHandler(dictionary, slangWordDefinitionTextField.getText()));
 
         JPanel mainPanel = new JPanel();
@@ -45,6 +53,7 @@ public class editSlangWord extends JPanel {
         JPanel editPanel = new JPanel();
         editPanel.setLayout(new BorderLayout());
         editPanel.add(mainPanel, BorderLayout.PAGE_START);
+        editPanel.setBorder(BorderFactory.createEmptyBorder(26,0,0,0));
 
         setLayout(new BorderLayout());
         add(searchPanel, BorderLayout.PAGE_START);

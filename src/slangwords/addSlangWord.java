@@ -28,7 +28,11 @@ public class addSlangWord extends JPanel {
         mainPanel.add(Box.createVerticalStrut(10));
         mainPanel.add(definitionPanel);
 
-        JButton addButton = new JButton("Add new word");
+        JButton addButton = new JButton("Add");
+        addButton.setFocusable(false);
+        addButton.setBackground(new Color(126, 138, 151));
+        addButton.setOpaque(true);
+        addButton.setBorderPainted(false);
         addButton.addActionListener(e -> addButtonHandler(dictionary, addWordTextField.getText(), addDefinitionTextField.getText()));
 
         JPanel panel = new JPanel();

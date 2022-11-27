@@ -16,14 +16,15 @@ public class viewSearchingHistory extends JPanel {
         slangWordLabel.setForeground(Color.GREEN);
         slangWordLabel.setFont(new Font("Serif", Font.PLAIN, 30));
 
-        JPanel slangWordPanel = new JPanel();
-        slangWordPanel.setLayout(new BoxLayout(slangWordPanel, BoxLayout.Y_AXIS));
-        slangWordPanel.add(slangWordLabel);
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.add(slangWordLabel);
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(26,0,0,0));
 
         setLayout(new BorderLayout());
         add(new JLabel("History:"), BorderLayout.PAGE_START);
         add(new JScrollPane(historyList), BorderLayout.CENTER);
-        add(slangWordPanel, BorderLayout.PAGE_END);
+        add(mainPanel, BorderLayout.PAGE_END);
     }
 
     public static void addWordToHistory(String word) {

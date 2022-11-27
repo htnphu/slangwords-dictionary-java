@@ -17,6 +17,10 @@ public class findByDefinition extends JPanel {
         JTextField searchWordText = new JTextField();
 
         JButton searchButton = new JButton("Search");
+        searchButton.setFocusable(false);
+        searchButton.setBackground(new Color(126, 138, 151));
+        searchButton.setOpaque(true);
+        searchButton.setBorderPainted(false);
         searchButton.addActionListener(e -> searchButtonHandler(dictionary, searchWordText.getText()));
 
         JPanel searchPanel = new JPanel();
@@ -41,18 +45,18 @@ public class findByDefinition extends JPanel {
 
         slangWordDefinitionLabel = new JLabel();
 
-        JPanel slangWordPanel = new JPanel();
-        slangWordPanel.setLayout(new BoxLayout(slangWordPanel, BoxLayout.Y_AXIS));
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-        slangWordPanel.add(slangWordLabel);
-        slangWordPanel.add(slangWordDefinitionLabel);
+        mainPanel.add(slangWordLabel);
+        mainPanel.add(slangWordDefinitionLabel);
 
         setLayout(new BorderLayout());
         searchPanel.setBorder(BorderFactory.createEmptyBorder(26,0,0,0));
-        slangWordPanel.setBorder(BorderFactory.createEmptyBorder(0,0,25,0));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(0,0,25,0));
         resultPanel.setBorder(BorderFactory.createEmptyBorder(0,0,80,0));
         add(searchPanel, BorderLayout.PAGE_START);
-        add(slangWordPanel, BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
         add(resultPanel, BorderLayout.PAGE_END);
     }
 
@@ -67,7 +71,7 @@ public class findByDefinition extends JPanel {
 
         if (result.isEmpty()) {
             slangWordLabel.setBorder(BorderFactory.createEmptyBorder(25,0,0,0));
-            slangWordLabel.setForeground(Color.RED);
+            slangWordLabel.setForeground(new Color(255, 80, 80));
             slangWordLabel.setText("Can not find " + "<" + slangWordKey + ">" +" in the dictionary");
             slangWordLabel.setFont(new Font("Serif", Font.PLAIN, 18));
             slangWordDefinitionLabel.setText(":( Try another one");
@@ -80,7 +84,7 @@ public class findByDefinition extends JPanel {
     void viewMeaning(HashMap<String, String> dictionary, String meaning) {
         slangWordLabel.setText(meaning);
         slangWordLabel.setFont(new Font("Serif", Font.PLAIN, 18));
-        slangWordLabel.setText("-> " + dictionary.get(meaning));
+        slangWordLabel.setText(" ==> " + dictionary.get(meaning));
         viewSearchingHistory.addWordToHistory(meaning);
     }
 
