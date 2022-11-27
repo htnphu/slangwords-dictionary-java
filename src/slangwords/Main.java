@@ -86,11 +86,11 @@ public class Main extends JFrame {
 
         JButton functionButton05 = new JButton("Edit slang word");
         functionButton05.setFocusable(false);
-        functionButton05.addActionListener(e -> System.out.println("poo5"));
+        functionButton05.addActionListener(e -> refreshFrameWithNewContent(new editSlangWord(dictionary)));
 
         JButton functionButton06 = new JButton("Delete slang word");
         functionButton06.setFocusable(false);
-        functionButton06.addActionListener(e -> System.out.println("poo6"));
+        functionButton06.addActionListener(e -> refreshFrameWithNewContent(new deleteSlangWord(dictionary)));
 
         JButton functionButton07 = new JButton("Reset");
         functionButton07.setFocusable(false);

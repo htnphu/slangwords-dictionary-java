@@ -13,11 +13,11 @@ public class findSlangWord extends JPanel {
         JButton searchButton = new JButton("Search");
         String data = searchWordText.getText();
         searchButton.addActionListener(e -> searchButtonHandler(dictionary, searchWordText.getText()));
-        JPanel findPanel = new JPanel();
-        findPanel.setLayout(new BoxLayout(findPanel, BoxLayout.X_AXIS));
-        findPanel.add(searchWordText);
-        findPanel.add(Box.createHorizontalStrut(5));
-        findPanel.add(searchButton);
+        JPanel searchPanel = new JPanel();
+        searchPanel.setLayout(new BoxLayout(searchPanel, BoxLayout.X_AXIS));
+        searchPanel.add(searchWordText);
+        searchPanel.add(Box.createHorizontalStrut(5));
+        searchPanel.add(searchButton);
 
         slangWordLabel = new JLabel();
         slangWordLabel.setFont(new Font("Serif", Font.PLAIN, 32));
@@ -31,9 +31,9 @@ public class findSlangWord extends JPanel {
 
         // Add to the main panel
         setLayout(new BorderLayout());
-        findPanel.setBorder(BorderFactory.createEmptyBorder(26,0,0,0));
+        searchPanel.setBorder(BorderFactory.createEmptyBorder(26,0,0,0));
 
-        add(findPanel, BorderLayout.PAGE_START);
+        add(searchPanel, BorderLayout.PAGE_START);
         add(slangWordPanel, BorderLayout.CENTER);
     }
 
