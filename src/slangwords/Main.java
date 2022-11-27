@@ -132,7 +132,7 @@ public class Main extends JFrame {
         functionButton09.setBackground(new Color(126, 138, 151));
         functionButton09.setOpaque(true);
         functionButton09.setBorderPainted(false);
-        functionButton09.addActionListener(e -> System.out.println("poo9"));
+        functionButton09.addActionListener(e -> refreshFrameWithNewContent(new funnyGame01(dictionary)));
 
         JButton functionButton10 = new JButton("Game 2");
         functionButton10.setFocusable(false);
