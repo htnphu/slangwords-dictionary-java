@@ -1,19 +1,22 @@
 package slangwords;
 
-import java.util.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 import javax.swing.border.EmptyBorder;
-
-public class funnyGame01 extends JPanel {
+public class funnyGame02 extends JPanel{
+    /**
+     * Attribute: Dictionary
+     */
     HashMap<String, String> newDictionary;
-    int answer;
     int point = 0;
     JLabel pointLabel;
     JLabel questionLabel;
     JButton[] answerButton;
-    public funnyGame01(HashMap<String, String> dictionary) {
+    int answer;
+
+    public funnyGame02(HashMap<String, String> dictionary) {
         JPanel pointPanel = new JPanel();
         String pointString = Integer.toString(point);
         pointLabel = new JLabel("Your point: " + pointString);
@@ -29,6 +32,7 @@ public class funnyGame01 extends JPanel {
         questionPanel.add(questionLabel);
 
         JPanel answersPanel = new JPanel(new GridLayout(4, 1, 10, 10 ));
+
         answerButton = new JButton[4];
         answerButton[0] = new JButton(); answerButton[0].setFocusable(false);
         answerButton[0].addActionListener(e -> answerButtonHandler(0, pointLabel));
@@ -50,7 +54,6 @@ public class funnyGame01 extends JPanel {
         add(answersPanel, BorderLayout.CENTER);
         createQuestion();
     }
-
     void createQuestion() {
         Random random = new Random();
         // answer: [0;3]
@@ -58,15 +61,15 @@ public class funnyGame01 extends JPanel {
         for (int idx = 0; idx < 4; idx++) {
             String randomWordKey = newDictionary.keySet().toArray()[random.nextInt(newDictionary.keySet().toArray().length)].toString();
             if (idx == answer) {
-                questionLabel.setText(randomWordKey);
+                questionLabel.setText(newDictionary.get(randomWordKey));
             }
-            answerButton[idx].setText(newDictionary.get(randomWordKey));
+            answerButton[idx].setText(randomWordKey);
         }
     }
 
     void answerButtonHandler(int userAnswer, JLabel pointLabel) {
         if (userAnswer == answer) {
-            JOptionPane.showMessageDialog(this, "Correct!", "Correct", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Correct!", "Correct ", JOptionPane.INFORMATION_MESSAGE);
             point += 1;
             String pointString = Integer.toString(point);
             pointLabel.setText("Your point: " + pointString);

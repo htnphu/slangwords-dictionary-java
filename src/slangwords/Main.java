@@ -139,7 +139,7 @@ public class Main extends JFrame {
         functionButton10.setBackground(new Color(126, 138, 151));
         functionButton10.setOpaque(true);
         functionButton10.setBorderPainted(false);
-        functionButton10.addActionListener(e -> System.out.println("poo10"));
+        functionButton10.addActionListener(e -> refreshFrameWithNewContent(new funnyGame02(dictionary)));
 
         JPanel buttonContainer = new JPanel();
         buttonContainer.setLayout(new GridLayout(10, 1, 5, 5));
